@@ -64,16 +64,40 @@ class LinkedList {
     return currentNode;
   }
 
-  pop() {}
+  // removes the last element from the list
+  pop() {
+    if (this.#size === 1) {
+      this.#head = null;
+      this.#tail = null;
+      this.#size = 0;
+    } else if (this.#size > 0) {
+      let currentNode = this.#head;
 
+      while (currentNode.next !== this.#tail) {
+        currentNode = currentNode.next;
+      }
+
+      currentNode.next = null;
+      this.#tail = currentNode;
+      this.#size--;
+    } else {
+      throw new Error("The list is empty");
+    }
+  }
+
+  // returns true if the passed in value is in the list and otherwise returns false
   contains(value) {}
 
+  // returns the index of the node containing value, or null if not found
   find(value) {}
 
+  // represents your LinkedList objects as strings, so you can print them out and preview them in the console
   toString() {}
 
+  // inserts a new node with the provided value at the given index
   insertAt(value, index) {}
 
+  // removes the node at the given index
   removeAt(index) {}
 }
 
