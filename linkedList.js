@@ -35,16 +35,34 @@ class LinkedList {
     this.#size++;
   }
 
+  // returns the total number of nodes in the list
   size() {
-    console.log(this.#size);
     return this.#size;
   }
 
-  head() {}
+  // returns the first node in the list
+  head() {
+    return this.#head;
+  }
 
-  tail() {}
+  // returns the last node in the list
+  tail() {
+    return this.#tail;
+  }
 
-  at(index) {}
+  // returns the node at the given index
+  at(index) {
+    if (index >= this.#size)
+      throw new Error("The index is out of the list range");
+
+    let currentNode = this.#head;
+
+    for (let i = 0; i < index; i++) {
+      currentNode = currentNode.next;
+    }
+
+    return currentNode;
+  }
 
   pop() {}
 
