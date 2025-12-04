@@ -86,7 +86,21 @@ class LinkedList {
   }
 
   // returns true if the passed in value is in the list and otherwise returns false
-  contains(value) {}
+  contains(value) {
+    if (this.#size === 0) return false;
+
+    let currentNode = this.#head;
+
+    while (currentNode) {
+      if (currentNode.data === value) {
+        return true;
+      } else {
+        currentNode = currentNode.next;
+      }
+    }
+
+    return false;
+  }
 
   // returns the index of the node containing value, or null if not found
   find(value) {}
