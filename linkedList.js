@@ -154,11 +154,7 @@ class LinkedList {
       return;
     }
 
-    let currentNode = this.#head;
-
-    for (let i = 0; i < index - 1; i++) {
-      currentNode = currentNode.next;
-    }
+    let currentNode = this.at(index - 1);
 
     const newNode = new Node(value, currentNode.next);
     currentNode.next = newNode;
@@ -168,8 +164,24 @@ class LinkedList {
 
   // removes the node at the given index
   removeAt(index) {
-    if (this.#size === 0 || index > this.#size) return null;
-    this.size--;
+    if (index < 0 || index >= this.#size) return null;
+
+    if (index === 0) {
+      this.#head = this.#head.next;
+      this.#size--;
+      if (this.#size === 0) this.#tail = null;
+      return;
+    }
+
+    if (index === this.#size - 1) {
+      this.pop();
+      return;
+    }
+
+    const nodeBefore = this.at(index - 1);
+    nodeBefore.next = nodeBefore.next.next;
+
+    this.#size--;
   }
 }
 
