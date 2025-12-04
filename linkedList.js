@@ -141,10 +141,36 @@ class LinkedList {
   }
 
   // inserts a new node with the provided value at the given index
-  insertAt(value, index) {}
+  insertAt(value, index) {
+    if (index < 0 || index > this.#size) return null;
+
+    if (index === 0) {
+      this.prepend(value);
+      return;
+    }
+
+    if (index === this.#size) {
+      this.append(value);
+      return;
+    }
+
+    let currentNode = this.#head;
+
+    for (let i = 0; i < index - 1; i++) {
+      currentNode = currentNode.next;
+    }
+
+    const newNode = new Node(value, currentNode.next);
+    currentNode.next = newNode;
+
+    this.#size++;
+  }
 
   // removes the node at the given index
-  removeAt(index) {}
+  removeAt(index) {
+    if (this.#size === 0 || index > this.#size) return null;
+    this.size--;
+  }
 }
 
 class Node {
