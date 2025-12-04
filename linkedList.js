@@ -52,7 +52,7 @@ class LinkedList {
 
   // returns the node at the given index
   at(index) {
-    if (index >= this.#size)
+    if (index < 0 || index >= this.#size)
       throw new Error("The index is out of the list range");
 
     let currentNode = this.#head;
