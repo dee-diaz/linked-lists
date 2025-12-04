@@ -134,9 +134,8 @@ class LinkedList {
       currentNode = currentNode.next;
     }
 
-    arr.push(null);
+    arr.push("null");
     const str = arr.join(" -> ");
-    console.log(str);
     return str;
   }
 
@@ -191,3 +190,5 @@ class Node {
     this.next = next;
   }
 }
+
+export default LinkedList;
