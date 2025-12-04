@@ -122,7 +122,23 @@ class LinkedList {
   }
 
   // represents your LinkedList objects as strings, so you can print them out and preview them in the console
-  toString() {}
+  // The format should be: ( value ) -> ( value ) -> ( value ) -> null
+  toString() {
+    if (this.#size === 0) return null;
+
+    let currentNode = this.#head;
+    let arr = [];
+
+    while (currentNode) {
+      arr.push(`( ${currentNode.data} )`);
+      currentNode = currentNode.next;
+    }
+
+    arr.push(null);
+    const str = arr.join(" -> ");
+    console.log(str);
+    return str;
+  }
 
   // inserts a new node with the provided value at the given index
   insertAt(value, index) {}
